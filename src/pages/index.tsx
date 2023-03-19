@@ -91,6 +91,8 @@ const Home: NextPage = () => {
             </button>
           </Stack.Vertical>
 
+          <Spacing size={20} />
+
           <ul>
             {todoList.map((x: any) => (
               <li>
@@ -107,6 +109,8 @@ const Home: NextPage = () => {
                     css={css`
                       border: unset;
                       background: unset;
+                      word-break: keep-all;
+                      white-space: pre-line;
                       text-decoration: underline;
                       cursor: pointer;
                       :hover {

@@ -7,13 +7,14 @@ export function UserNav() {
   const { data: user, login, logout } = useUser();
 
   return (
-    <Stack.Horizontal
-      align="space-between"
-      css={css`
-        padding: 0 40px;
-      `}
-    >
-      <h4>welcome {user?.login ?? "guest"}!</h4>
+    <Stack.Horizontal align="right">
+      <h4
+        css={css`
+          margin-right: 10px;
+        `}
+      >
+        welcome {user?.login ?? "guest"}!
+      </h4>
 
       {user == null ? (
         <button onClick={login}>로그인</button>
