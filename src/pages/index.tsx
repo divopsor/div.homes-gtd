@@ -61,7 +61,10 @@ const Home: NextPage = () => {
         )}
 
         <div>
-          <input value={inputText} />
+          <input
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+          />
           <br></br>
           <button
             onClick={async () => {
