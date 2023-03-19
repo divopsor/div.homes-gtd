@@ -18,6 +18,7 @@ function StackHorizontal({
       css={css`
         display: flex;
         justify-content: ${align};
+        align-items: center;
       `}
     >
       {children}

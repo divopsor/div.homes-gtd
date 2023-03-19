@@ -45,10 +45,6 @@ const Home: NextPage = () => {
     <main>
       <Spacing size={10} />
 
-      <h1>Getting Things Done</h1>
-
-      <Spacing size={10} />
-
       <UserNav />
 
       <Spacing size={30} />

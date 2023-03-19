@@ -7,27 +7,55 @@ export function UserNav() {
   const { data: user, login, logout } = useUser();
 
   return (
-    <Stack.Horizontal align="right">
-      <h4
-        css={css`
-          margin-right: 10px;
-        `}
-      >
-        welcome {user?.login ?? "guest"}!
-      </h4>
+    <Stack.Horizontal align="space-between">
+      <h1>Getting Things Done</h1>
 
-      {user == null ? (
-        <button onClick={login}>로그인</button>
-      ) : (
-        <button
-          onClick={() => {
-            logout();
-            router.reload();
-          }}
+      <Stack.Horizontal align="right">
+        <h4
+          css={css`
+            margin-right: 10px;
+          `}
         >
-          로그아웃
-        </button>
-      )}
+          {user?.login ?? "guest"}
+        </h4>
+
+        {user == null ? (
+          <button
+            onClick={login}
+            css={css`
+              border: unset;
+              background: unset;
+              word-break: keep-all;
+              text-decoration: underline;
+              cursor: pointer;
+              :hover {
+                color: blue;
+              }
+            `}
+          >
+            로그인
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              logout();
+              router.reload();
+            }}
+            css={css`
+              border: unset;
+              background: unset;
+              word-break: keep-all;
+              text-decoration: underline;
+              cursor: pointer;
+              :hover {
+                color: blue;
+              }
+            `}
+          >
+            로그아웃
+          </button>
+        )}
+      </Stack.Horizontal>
     </Stack.Horizontal>
   );
 }
