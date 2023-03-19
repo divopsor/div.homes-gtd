@@ -1,3 +1,4 @@
+import { css } from "@emotion/react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -86,7 +87,26 @@ const Home: NextPage = () => {
 
         <ul>
           {todoList.map((x: any) => (
-            <li>{x.contents}</li>
+            <li>
+              <p>{x.contents}</p>
+              <button
+                css={css`
+                  border: unset;
+                  background: unset;
+                  text-decoration: underline;
+                  cursor: pointer;
+                  :hover {
+                    color: blue;
+                  }
+                `}
+                onClick={async () => {
+                  await GtdTodoAPI.delete({ id: x.id });
+                  await refetchTodoList();
+                }}
+              >
+                삭제
+              </button>
+            </li>
           ))}
         </ul>
       </main>
