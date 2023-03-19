@@ -1,0 +1,16 @@
+{
+  "name": "@divopsor/frontend-configs-cli",
+  "private": true,
+  "bin": {
+    "config-cli": "./index.js"
+  },
+  "publishConfig": {
+    "bin": {
+      "config-cli": "./index.js"
+    }
+  },
+  "dependencies": {
+    "execa": "^5",
+    "fs-extra": "^10.1.0"
+  }
+}
