@@ -2,13 +2,17 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { GtdTodoAPI } from "../api/index";
 import { useResetQueryParam, useUser } from "../hooks";
+import { useList } from "../hooks/useList";
 
 const Home: NextPage = () => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const { resetQueryParam } = useResetQueryParam();
   const { isLoading, data: user, login, logout } = useUser();
+  const [todoList, refetchTodoList] = useList("todo");
+  const [inputText, setInputText] = useState<string>();
 
   useEffect(() => {
     if (!router.isReady) {
@@ -40,13 +44,48 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <h1>hello world! GTD!</h1>
-        <div>login: {user?.login}</div>
+        <h1>Getting Things Done</h1>
+        <h4>welcome {user?.login ?? "guest"}!</h4>
+
         {user == null ? (
           <button onClick={login}>로그인</button>
         ) : (
-          <button onClick={logout}>로그아웃</button>
+          <button
+            onClick={() => {
+              logout();
+              router.reload();
+            }}
+          >
+            로그아웃
+          </button>
         )}
+
+        <div>
+          <input value={inputText} />
+          <br></br>
+          <button
+            onClick={async () => {
+              await GtdTodoAPI.create({
+                resource: {
+                  contents: inputText,
+                },
+                summary: {
+                  contents: inputText?.split("\n")[0],
+                },
+              });
+              setInputText("");
+              await refetchTodoList();
+            }}
+          >
+            입력
+          </button>
+        </div>
+
+        <ul>
+          {todoList.map((x: any) => (
+            <li>{x.contents}</li>
+          ))}
+        </ul>
       </main>
     </div>
   );
