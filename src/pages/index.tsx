@@ -77,12 +77,8 @@ const Home: NextPage = () => {
             <button
               onClick={async () => {
                 await GtdTodoAPI.create({
-                  resource: {
-                    contents: inputText,
-                  },
-                  summary: {
-                    contents: inputText?.split("\n")[0],
-                  },
+                  resource: {},
+                  summary: { contents: inputText },
                 });
                 setInputText("");
                 await refetchTodoList();
@@ -98,24 +94,33 @@ const Home: NextPage = () => {
           <ul>
             {todoList.map((x: any) => (
               <li>
-                <p>{x.contents}</p>
-                <button
-                  css={css`
-                    border: unset;
-                    background: unset;
-                    text-decoration: underline;
-                    cursor: pointer;
-                    :hover {
-                      color: blue;
-                    }
-                  `}
-                  onClick={async () => {
-                    await GtdTodoAPI.delete({ id: x.id });
-                    await refetchTodoList();
-                  }}
-                >
-                  삭제
-                </button>
+                <Stack.Horizontal>
+                  <p
+                    css={css`
+                      width: 100%;
+                      font-size: 1.6rem;
+                    `}
+                  >
+                    {x.contents}
+                  </p>
+                  <button
+                    css={css`
+                      border: unset;
+                      background: unset;
+                      text-decoration: underline;
+                      cursor: pointer;
+                      :hover {
+                        color: blue;
+                      }
+                    `}
+                    onClick={async () => {
+                      await GtdTodoAPI.delete({ id: x.id });
+                      await refetchTodoList();
+                    }}
+                  >
+                    삭제
+                  </button>
+                </Stack.Horizontal>
               </li>
             ))}
           </ul>
