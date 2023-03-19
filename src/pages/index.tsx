@@ -9,7 +9,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <h1>hello world!</h1>
+        <h1>hello world! GTD!</h1>
       </main>
     </div>
   );
