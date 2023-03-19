@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
 import type { NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { GtdTodoAPI } from "../api/index";
+import { UserNav } from "../components/UserNav";
 import { useResetQueryParam, useUser } from "../hooks";
 import { useList } from "../hooks/useList";
 
@@ -40,26 +40,10 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      <Head>
-        <title>Hello world!</title>
-      </Head>
-
       <main>
         <h1>Getting Things Done</h1>
-        <h4>welcome {user?.login ?? "guest"}!</h4>
 
-        {user == null ? (
-          <button onClick={login}>로그인</button>
-        ) : (
-          <button
-            onClick={() => {
-              logout();
-              router.reload();
-            }}
-          >
-            로그아웃
-          </button>
-        )}
+        <UserNav />
 
         <div>
           <input
