@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { AppProps } from "next/app";
 import Footer from "@divops/component-footer";
 import { ReactNode } from "react";
-import { Head } from "next/document";
+import Head from "next/head";
 import "../styles/index.css";
 
 const queryClient = new QueryClient();
