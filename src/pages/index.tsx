@@ -101,6 +101,8 @@ const Home: NextPage = () => {
                     css={css`
                       width: 100%;
                       font-size: 1.6rem;
+                      word-break: keep-all;
+                      white-space: pre-line;
                     `}
                   >
                     {x.contents}
@@ -110,7 +112,6 @@ const Home: NextPage = () => {
                       border: unset;
                       background: unset;
                       word-break: keep-all;
-                      white-space: pre-line;
                       text-decoration: underline;
                       cursor: pointer;
                       :hover {
