@@ -32,7 +32,11 @@ function StackVertical({ children, className, align = "center" }: StackProps) {
       css={css`
         display: flex;
         flex-direction: column;
-        align-items: ${align};
+        align-items: ${align === "right"
+          ? "end"
+          : align === "left"
+          ? "start"
+          : "center"};
       `}
     >
       {children}

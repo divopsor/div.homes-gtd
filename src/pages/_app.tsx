@@ -4,6 +4,7 @@ import Footer from "@divops/component-footer";
 import { ReactNode } from "react";
 import Head from "next/head";
 import "../styles/index.css";
+import { Container } from "../components/Container";
 
 const queryClient = new QueryClient();
 
@@ -13,30 +14,10 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>Getting Things Done</title>
       </Head>
-      <Container>
+      <Container width={1200}>
         <Component {...pageProps} />
         <Footer />
       </Container>
     </QueryClientProvider>
   );
 }
-
-type Styled = ({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) => JSX.Element;
-
-const Container: Styled = ({ children }) => {
-  return (
-    <div
-      css={{
-        margin: "0 auto",
-        width: "1200px",
-      }}
-      children={children}
-    />
-  );
-};
