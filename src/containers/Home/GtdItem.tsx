@@ -28,9 +28,10 @@ export function GtdItem({ data }: GtdItemProps) {
               onClick={async () => {
                 await GtdTodoAPI.update({
                   id: data.id,
-                  resource: {},
-                  summary: { contents: text },
-                }).then(refetchTodoList);
+                  resource: { contents: text },
+                  summary: { contents: text?.split("\n")[0] },
+                });
+                await refetchTodoList();
                 setMode("view");
               }}
             >
@@ -64,7 +65,8 @@ export function GtdItem({ data }: GtdItemProps) {
           </TxtButton>
           <TxtButton
             onClick={async () => {
-              await GtdTodoAPI.delete({ id: data.id }).then(refetchTodoList);
+              await GtdTodoAPI.delete({ id: data.id });
+              await refetchTodoList();
             }}
           >
             삭제
