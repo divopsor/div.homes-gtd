@@ -74,8 +74,8 @@ export const Home: NextPage = () => {
             <button
               onClick={async () => {
                 await GtdTodoAPI.create({
-                  resource: {},
-                  summary: { contents: inputText },
+                  resource: { contents: inputText },
+                  summary: { contents: inputText?.split("\n")[0] },
                 });
                 setInputText("");
                 await refetchTodoList();
