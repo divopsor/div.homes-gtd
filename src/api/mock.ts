@@ -21,8 +21,6 @@ export const MockGtdTodoAPI = {
     const list = JSON.parse(
       localStorage.getItem("TEST_GtdTodoAPI_LIST") ?? "[]"
     );
-    console.log(id);
-    console.log(list.map((x) => x.id));
     localStorage.setItem(
       "TEST_GtdTodoAPI_LIST",
       JSON.stringify([...list.filter((x: any) => x.summary.id !== id)])
