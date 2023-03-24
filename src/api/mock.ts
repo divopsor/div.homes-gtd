@@ -1,5 +1,5 @@
 export const MockGtdTodoAPI = {
-  create: ({ resource, summary }: { resource: any; summary: any }) => {
+  create: async ({ resource, summary }: { resource: any; summary: any }) => {
     const list = JSON.parse(
       localStorage.getItem("TEST_GtdTodoAPI_LIST") ?? "[]"
     );
@@ -16,8 +16,9 @@ export const MockGtdTodoAPI = {
         },
       ])
     );
+    return;
   },
-  delete: ({ id }: { id: string }) => {
+  delete: async ({ id }: { id: string }) => {
     const list = JSON.parse(
       localStorage.getItem("TEST_GtdTodoAPI_LIST") ?? "[]"
     );
@@ -25,12 +26,46 @@ export const MockGtdTodoAPI = {
       "TEST_GtdTodoAPI_LIST",
       JSON.stringify([...list.filter((x: any) => x.summary.id !== id)])
     );
+    return;
   },
-  readList: () => {
+  readList: async () => {
     const list = JSON.parse(
       localStorage.getItem("TEST_GtdTodoAPI_LIST") ?? "[]"
     );
     return { data: list.map((x: any) => x.summary) };
+  },
+  update: async ({
+    id,
+    resource,
+    summary,
+  }: {
+    id: string;
+    resource: any;
+    summary: any;
+  }) => {
+    const list = JSON.parse(
+      localStorage.getItem("TEST_GtdTodoAPI_LIST") ?? "[]"
+    );
+
+    const index = list.findIndex((x: any) => x.summary.id === id);
+
+    if (index !== -1) {
+      list[index] = {
+        resource: {
+          ...list[index].resource,
+          ...resource,
+        },
+        summary: {
+          ...list[index].summary,
+          ...summary,
+          id,
+        },
+      };
+    }
+
+    localStorage.setItem("TEST_GtdTodoAPI_LIST", JSON.stringify(list));
+
+    return;
   },
 };
 
