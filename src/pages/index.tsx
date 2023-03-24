@@ -91,7 +91,7 @@ const Home: NextPage = () => {
 
           <ul>
             {todoList.map((x: any) => (
-              <li>
+              <li key={x.id}>
                 <Stack.Horizontal>
                   <p
                     css={css`
