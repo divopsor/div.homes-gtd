@@ -1,10 +1,10 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
-import { GtdTodoAPI } from "../../api/index";
-import { ListItem } from "../../components/ListItem";
-import { Txt } from "../../components/Txt";
-import { TxtButton } from "../../components/TxtButton";
-import { useList } from "../../hooks/useList";
+import { GtdTodoAPI } from "../api/index";
+import { ListItem } from "./ListItem";
+import { Txt } from "./Txt";
+import { TxtButton } from "./TxtButton";
+import { useList } from "../hooks/useList";
 
 interface GtdItemProps {
   data: { id: string; contents: string };
