@@ -8,11 +8,9 @@ export const MockGtdTodoAPI = {
       JSON.stringify([
         ...list,
         {
+          id: generateRandomString(20),
           resource,
-          summary: {
-            id: generateRandomString(20),
-            ...summary,
-          },
+          summary,
         },
       ])
     );
@@ -24,7 +22,7 @@ export const MockGtdTodoAPI = {
     );
     localStorage.setItem(
       "TEST_GtdTodoAPI_LIST",
-      JSON.stringify([...list.filter((x: any) => x.summary.id !== id)])
+      JSON.stringify([...list.filter((x: any) => x.id !== id)])
     );
     return;
   },
@@ -32,7 +30,7 @@ export const MockGtdTodoAPI = {
     const list = JSON.parse(
       localStorage.getItem("TEST_GtdTodoAPI_LIST") ?? "[]"
     );
-    return { data: list.map((x: any) => x.summary) };
+    return { data: list.map((x: any) => ({ id: x.id, ...x.summary })) };
   },
   update: async ({
     id,
@@ -47,10 +45,11 @@ export const MockGtdTodoAPI = {
       localStorage.getItem("TEST_GtdTodoAPI_LIST") ?? "[]"
     );
 
-    const index = list.findIndex((x: any) => x.summary.id === id);
+    const index = list.findIndex((x: any) => x.id === id);
 
     if (index !== -1) {
       list[index] = {
+        ...list[index],
         resource: {
           ...list[index].resource,
           ...resource,
@@ -58,7 +57,6 @@ export const MockGtdTodoAPI = {
         summary: {
           ...list[index].summary,
           ...summary,
-          id,
         },
       };
     }
