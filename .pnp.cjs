@@ -1101,10 +1101,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:18.0.28", {\
-          "packageLocation": "./.yarn/cache/@types-react-npm-18.0.28-c6157151cc-e752df9611.zip/node_modules/@types/react/",\
+        ["npm:18.0.29", {\
+          "packageLocation": "./.yarn/cache/@types-react-npm-18.0.29-9bbfe24701-75f56f81d8.zip/node_modules/@types/react/",\
           "packageDependencies": [\
-            ["@types/react", "npm:18.0.28"],\
+            ["@types/react", "npm:18.0.29"],\
             ["@types/prop-types", "npm:15.7.5"],\
             ["@types/scheduler", "npm:0.16.3"],\
             ["csstype", "npm:3.1.1"]\
@@ -1117,7 +1117,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-react-dom-npm-18.0.6-55949dcf84-db571047af.zip/node_modules/@types/react-dom/",\
           "packageDependencies": [\
             ["@types/react-dom", "npm:18.0.6"],\
-            ["@types/react", "npm:18.0.28"]\
+            ["@types/react", "npm:18.0.29"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1599,7 +1599,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["browserslist", "npm:4.21.5"],\
             ["caniuse-lite", "npm:1.0.30001469"],\
-            ["electron-to-chromium", "npm:1.4.339"],\
+            ["electron-to-chromium", "npm:1.4.340"],\
             ["node-releases", "npm:2.0.10"],\
             ["update-browserslist-db", "virtual:e3b9e9d029ed690d72cbb29196ba0a23f15b398eeb926347678187be937db870a04cbf984eecc8e0ec9c290158a9cd8607d12f0188665abe039fa4a9051a22ac#npm:1.0.10"]\
           ],\
@@ -1871,10 +1871,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["electron-to-chromium", [\
-        ["npm:1.4.339", {\
-          "packageLocation": "./.yarn/cache/electron-to-chromium-npm-1.4.339-2871f766e1-e329efb7c4.zip/node_modules/electron-to-chromium/",\
+        ["npm:1.4.340", {\
+          "packageLocation": "./.yarn/cache/electron-to-chromium-npm-1.4.340-accc68e032-b7ffa64814.zip/node_modules/electron-to-chromium/",\
           "packageDependencies": [\
-            ["electron-to-chromium", "npm:1.4.339"]\
+            ["electron-to-chromium", "npm:1.4.340"]\
           ],\
           "linkType": "HARD"\
         }]\
