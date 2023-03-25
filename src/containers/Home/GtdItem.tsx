@@ -1,3 +1,4 @@
+import { css } from "@emotion/react";
 import { useState } from "react";
 import { GtdTodoAPI } from "../../api/index";
 import { ListItem } from "../../components/ListItem";
@@ -18,9 +19,18 @@ export function GtdItem({ data }: GtdItemProps) {
       <ListItem
         left={
           <textarea
+            css={css`
+              resize: none;
+              width: 100%;
+              font-size: 1.6rem;
+              word-break: keep-all;
+              white-space: pre-line;
+              font-family: "Noto Sans KR", sans-serif;
+            `}
             value={text}
+            rows={text.split("\n").length}
             onChange={(e) => setText(e.target.value)}
-          ></textarea>
+          />
         }
         right={
           <>
@@ -29,7 +39,7 @@ export function GtdItem({ data }: GtdItemProps) {
                 await GtdTodoAPI.update({
                   id: data.id,
                   resource: { contents: text },
-                  summary: { contents: text?.split("\n")[0] },
+                  summary: { contents: text },
                 });
                 await refetchTodoList();
                 setMode("view");
@@ -53,7 +63,15 @@ export function GtdItem({ data }: GtdItemProps) {
 
   return (
     <ListItem
-      left={<Txt>{text}</Txt>}
+      left={
+        <Txt
+          css={css`
+            padding: 3px;
+          `}
+        >
+          {text}
+        </Txt>
+      }
       right={
         <>
           <TxtButton
