@@ -52,13 +52,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.0.6"],\
             ["@typescript-eslint/eslint-plugin", "virtual:f20a71b75d16e527de2a12e6aa6602e4957817d837bb6fc22b883c8ce04a5a5d17365990d33f3040ce58ac4dfc89644e65ec5b54f9bcab3af54b3f42688c329f#npm:5.56.0"],\
             ["@typescript-eslint/parser", "virtual:f20a71b75d16e527de2a12e6aa6602e4957817d837bb6fc22b883c8ce04a5a5d17365990d33f3040ce58ac4dfc89644e65ec5b54f9bcab3af54b3f42688c329f#npm:5.56.0"],\
+            ["api", "link:./src/api::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A."],\
+            ["components", "link:./src/components::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A."],\
+            ["containers", "link:./src/containers::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A."],\
             ["eslint", "npm:8.23.1"],\
             ["eslint-config-next", "virtual:f20a71b75d16e527de2a12e6aa6602e4957817d837bb6fc22b883c8ce04a5a5d17365990d33f3040ce58ac4dfc89644e65ec5b54f9bcab3af54b3f42688c329f#npm:12.3.1"],\
             ["eslint-plugin-import", "virtual:f20a71b75d16e527de2a12e6aa6602e4957817d837bb6fc22b883c8ce04a5a5d17365990d33f3040ce58ac4dfc89644e65ec5b54f9bcab3af54b3f42688c329f#npm:2.27.5"],\
+            ["hooks", "link:./src/hooks::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A."],\
             ["husky", "npm:8.0.3"],\
             ["next", "virtual:f20a71b75d16e527de2a12e6aa6602e4957817d837bb6fc22b883c8ce04a5a5d17365990d33f3040ce58ac4dfc89644e65ec5b54f9bcab3af54b3f42688c329f#npm:12.3.1"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:f20a71b75d16e527de2a12e6aa6602e4957817d837bb6fc22b883c8ce04a5a5d17365990d33f3040ce58ac4dfc89644e65ec5b54f9bcab3af54b3f42688c329f#npm:18.2.0"],\
+            ["styles", "link:./src/styles::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A."],\
             ["typescript", "patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"]\
           ],\
           "linkType": "SOFT"\
@@ -428,13 +433,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.0.6"],\
             ["@typescript-eslint/eslint-plugin", "virtual:f20a71b75d16e527de2a12e6aa6602e4957817d837bb6fc22b883c8ce04a5a5d17365990d33f3040ce58ac4dfc89644e65ec5b54f9bcab3af54b3f42688c329f#npm:5.56.0"],\
             ["@typescript-eslint/parser", "virtual:f20a71b75d16e527de2a12e6aa6602e4957817d837bb6fc22b883c8ce04a5a5d17365990d33f3040ce58ac4dfc89644e65ec5b54f9bcab3af54b3f42688c329f#npm:5.56.0"],\
+            ["api", "link:./src/api::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A."],\
+            ["components", "link:./src/components::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A."],\
+            ["containers", "link:./src/containers::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A."],\
             ["eslint", "npm:8.23.1"],\
             ["eslint-config-next", "virtual:f20a71b75d16e527de2a12e6aa6602e4957817d837bb6fc22b883c8ce04a5a5d17365990d33f3040ce58ac4dfc89644e65ec5b54f9bcab3af54b3f42688c329f#npm:12.3.1"],\
             ["eslint-plugin-import", "virtual:f20a71b75d16e527de2a12e6aa6602e4957817d837bb6fc22b883c8ce04a5a5d17365990d33f3040ce58ac4dfc89644e65ec5b54f9bcab3af54b3f42688c329f#npm:2.27.5"],\
+            ["hooks", "link:./src/hooks::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A."],\
             ["husky", "npm:8.0.3"],\
             ["next", "virtual:f20a71b75d16e527de2a12e6aa6602e4957817d837bb6fc22b883c8ce04a5a5d17365990d33f3040ce58ac4dfc89644e65ec5b54f9bcab3af54b3f42688c329f#npm:12.3.1"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:f20a71b75d16e527de2a12e6aa6602e4957817d837bb6fc22b883c8ce04a5a5d17365990d33f3040ce58ac4dfc89644e65ec5b54f9bcab3af54b3f42688c329f#npm:18.2.0"],\
+            ["styles", "link:./src/styles::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A."],\
             ["typescript", "patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"]\
           ],\
           "linkType": "SOFT"\
@@ -1421,6 +1431,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["api", [\
+        ["link:./src/api::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A.", {\
+          "packageLocation": "./src/api/",\
+          "packageDependencies": [\
+            ["api", "link:./src/api::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A."]\
+          ],\
+          "linkType": "SOFT",\
+          "discardFromLookup": true\
+        }]\
+      ]],\
       ["argparse", [\
         ["npm:2.0.1", {\
           "packageLocation": "./.yarn/cache/argparse-npm-2.0.1-faff7999e6-83644b5649.zip/node_modules/argparse/",\
@@ -1690,6 +1710,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["components", [\
+        ["link:./src/components::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A.", {\
+          "packageLocation": "./src/components/",\
+          "packageDependencies": [\
+            ["components", "link:./src/components::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A."]\
+          ],\
+          "linkType": "SOFT",\
+          "discardFromLookup": true\
+        }]\
+      ]],\
       ["concat-map", [\
         ["npm:0.0.1", {\
           "packageLocation": "./.yarn/cache/concat-map-npm-0.0.1-85a921b7ee-902a9f5d89.zip/node_modules/concat-map/",\
@@ -1697,6 +1727,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["concat-map", "npm:0.0.1"]\
           ],\
           "linkType": "HARD"\
+        }]\
+      ]],\
+      ["containers", [\
+        ["link:./src/containers::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A.", {\
+          "packageLocation": "./src/containers/",\
+          "packageDependencies": [\
+            ["containers", "link:./src/containers::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A."]\
+          ],\
+          "linkType": "SOFT",\
+          "discardFromLookup": true\
         }]\
       ]],\
       ["convert-source-map", [\
@@ -2866,6 +2906,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-is", "npm:16.13.1"]\
           ],\
           "linkType": "HARD"\
+        }]\
+      ]],\
+      ["hooks", [\
+        ["link:./src/hooks::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A.", {\
+          "packageLocation": "./src/hooks/",\
+          "packageDependencies": [\
+            ["hooks", "link:./src/hooks::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A."]\
+          ],\
+          "linkType": "SOFT",\
+          "discardFromLookup": true\
         }]\
       ]],\
       ["human-signals", [\
@@ -4228,6 +4278,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "react"\
           ],\
           "linkType": "HARD"\
+        }]\
+      ]],\
+      ["styles", [\
+        ["link:./src/styles::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A.", {\
+          "packageLocation": "./src/styles/",\
+          "packageDependencies": [\
+            ["styles", "link:./src/styles::locator=%40divopsor%2Fdiv.homes-gtd%40workspace%3A."]\
+          ],\
+          "linkType": "SOFT",\
+          "discardFromLookup": true\
         }]\
       ]],\
       ["stylis", [\
