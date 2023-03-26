@@ -1,5 +1,5 @@
 import { GitHubOAuthSdk } from "@divops/github-oauth-sdk";
-import { MockGtdTodoAPI, MockUserAPI } from "./mock";
+import { MockGtdDoneAPI, MockGtdTodoAPI, MockUserAPI } from "./mock";
 
 const g = GitHubOAuthSdk.of({
   baseUrl: "https://app.divops.kr/github-api",
@@ -19,3 +19,7 @@ export const UserAPI = isLocal ? MockUserAPI : g.UserAPI;
 export const GtdTodoAPI = isLocal
   ? MockGtdTodoAPI
   : g.ResourceAPI.of({ model: "gtd-todo" });
+
+export const GtdDoneAPI = isLocal
+  ? MockGtdDoneAPI
+  : g.ResourceAPI.of({ model: "gtd-done" });

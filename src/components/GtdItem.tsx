@@ -1,15 +1,22 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 import { GtdTodoAPI } from "../api/index";
-import { ListItem } from "./ListItem";
-import { Txt } from "./Txt";
-import { TxtButton } from "./TxtButton";
 import { useList } from "../hooks/useList";
+import { ListItem, Txt, TxtButton } from "./ui";
 
 interface GtdItemProps {
   data: { id: string; contents: string };
+  buttons: Array<{
+    name: string;
+    onClick: (_: {
+      text: string;
+      setMode: (__: "view" | "edit") => void;
+      setText: (__: string) => void;
+    }) => void | Promise<void>;
+  }>;
 }
-export function GtdItem({ data }: GtdItemProps) {
+
+export function GtdItem({ data, buttons }: GtdItemProps) {
   const [text, setText] = useState<string>(data.contents);
   const [mode, setMode] = useState<"view" | "edit">("view");
   const [, refetchTodoList] = useList("todo");
@@ -32,31 +39,11 @@ export function GtdItem({ data }: GtdItemProps) {
             onChange={(e) => setText(e.target.value)}
           />
         }
-        right={
-          <>
-            <TxtButton
-              onClick={async () => {
-                await GtdTodoAPI.update({
-                  id: data.id,
-                  resource: { contents: text },
-                  summary: { contents: text },
-                });
-                await refetchTodoList();
-                setMode("view");
-              }}
-            >
-              제출
-            </TxtButton>
-            <TxtButton
-              onClick={async () => {
-                setText(data.contents);
-                setMode("view");
-              }}
-            >
-              취소
-            </TxtButton>
-          </>
-        }
+        right={buttons.map((button) => (
+          <TxtButton onClick={() => button.onClick({ text, setMode, setText })}>
+            {button.name}
+          </TxtButton>
+        ))}
       />
     );
   }

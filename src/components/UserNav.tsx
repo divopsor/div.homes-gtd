@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import router from "next/router";
 import { useUser } from "../hooks/useUser";
-import { Stack } from "./Stack";
+import { Stack } from "./ui";
 
 export function UserNav() {
   const { data: user, login, logout } = useUser();

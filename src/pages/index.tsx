@@ -1,1 +1,1 @@
-export { Home as default } from "../containers/Home";
+export { HomePage as default } from "../containers/Home/HomePage";

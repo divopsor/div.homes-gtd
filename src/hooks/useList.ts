@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { GtdTodoAPI } from "../api/index";
+import { GtdDoneAPI, GtdTodoAPI } from "../api/index";
 import { useUser } from "./useUser";
 
-type Model = "todo";
+type Model = "todo" | "done";
 
 export function useList(model: Model) {
   const { data: user } = useUser();
@@ -23,10 +23,14 @@ export function useList(model: Model) {
 }
 
 const ModelAPI = {
-  of(model: "todo") {
+  of(model: Model) {
     switch (model) {
       case "todo": {
         return GtdTodoAPI;
+      }
+      default:
+      case "todo": {
+        return GtdDoneAPI;
       }
     }
   },
