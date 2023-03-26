@@ -3,6 +3,7 @@ import { useState } from "react";
 import { GtdTodoAPI } from "../api/index";
 import { useList } from "../hooks/useList";
 import { ListItem, Txt, TxtButton } from "./ui";
+import { TextArea } from "./ui/TextArea";
 
 interface GtdItemProps {
   data: { id: string; contents: string };
@@ -24,21 +25,7 @@ export function GtdItem({ data, buttons }: GtdItemProps) {
   if (mode === "edit") {
     return (
       <ListItem
-        left={
-          <textarea
-            css={css`
-              resize: none;
-              width: 100%;
-              font-size: 1.6rem;
-              word-break: keep-all;
-              white-space: pre-line;
-              font-family: "Noto Sans KR", sans-serif;
-            `}
-            value={text}
-            rows={text.split("\n").length}
-            onChange={(e) => setText(e.target.value)}
-          />
-        }
+        left={<TextArea value={text} setValue={setText} />}
         right={buttons.map((button) => (
           <TxtButton onClick={() => button.onClick({ text, setMode, setText })}>
             {button.name}

@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 import { Spacing } from "./Space";
+import { TextArea } from "./TextArea";
 
 interface TextAreaFormProps {
   defaultText?: string;
@@ -12,20 +13,10 @@ export function TextAreaForm({ defaultText, onSubmit }: TextAreaFormProps) {
 
   return (
     <>
-      <textarea
-        spellCheck={false}
-        css={css`
-          word-break: keep-all;
-          resize: none;
-          width: 100%;
-          outline: none !important;
-          :focus {
-            background-color: #f0f0f0;
-          }
-        `}
-        rows={Math.max(inputText?.split("\n").length ?? 0, 2)}
+      <TextArea
         value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
+        setValue={setInputText}
+        rows={Math.max(2, inputText.split("\n").length)}
       />
       <Spacing size={4} />
       <button
