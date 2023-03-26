@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
-import { GtdTodoAPI } from "api";
+import { GtdDoneAPI, GtdTodoAPI } from "api";
 import { useLoginCallback, useList, useUser } from "hooks";
-import { Welcome } from "./Welcome";
+import { Welcome } from "../Welcome";
 import {
   Container,
   Spacing,
@@ -48,6 +48,14 @@ export const HomePage: NextPage = () => {
               key={data.id}
               data={data}
               viewButtons={{
+                완료: async () => {
+                  await GtdDoneAPI.create({
+                    resource: { contents: data.contents },
+                    summary: { contents: data.contents },
+                  });
+                  await GtdTodoAPI.delete({ id: data.id });
+                  await refetchTodoList();
+                },
                 수정: ({ setMode }) => setMode("edit"),
                 삭제: async () => {
                   await GtdTodoAPI.delete({ id: data.id });

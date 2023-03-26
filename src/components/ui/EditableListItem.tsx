@@ -14,7 +14,7 @@ interface Buttons {
 interface EditableListItemProps {
   data: { id: string; contents: string };
   viewButtons: Buttons;
-  editButtons: Buttons;
+  editButtons?: Buttons;
 }
 
 export function EditableListItem({
@@ -39,16 +39,17 @@ export function EditableListItem({
             ))}
           />
         ),
-        edit: (
-          <ListItem
-            left={<TextArea value={text} setValue={setText} />}
-            right={Object.entries(editButtons).map(([name, onClick]) => (
-              <TxtButton onClick={() => onClick({ text, setMode, setText })}>
-                {name}
-              </TxtButton>
-            ))}
-          />
-        ),
+        edit:
+          editButtons == null ? null : (
+            <ListItem
+              left={<TextArea value={text} setValue={setText} />}
+              right={Object.entries(editButtons).map(([name, onClick]) => (
+                <TxtButton onClick={() => onClick({ text, setMode, setText })}>
+                  {name}
+                </TxtButton>
+              ))}
+            />
+          ),
       }}
     />
   );
