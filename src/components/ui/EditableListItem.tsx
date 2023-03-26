@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ListItem, TxtButton } from "./index";
+import { ListItem, TxtButton } from "components/ui";
 import { Switch } from "./Switch";
 import { TextArea } from "./TextArea";
 

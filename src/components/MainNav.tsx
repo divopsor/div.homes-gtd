@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
 import router from "next/router";
-import { useUser } from "../hooks/useUser";
-import { Stack } from "./ui";
+import { useUser } from "hooks";
+import { Stack } from "components/ui";
 
-export function UserNav() {
+export function MainNav() {
   const { data: user, login, logout } = useUser();
 
   return (

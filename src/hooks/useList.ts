@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { GtdDoneAPI, GtdTodoAPI } from "../api/index";
+import { GtdDoneAPI, GtdTodoAPI } from "api";
 import { useUser } from "./useUser";
 
 type Model = "todo" | "done";

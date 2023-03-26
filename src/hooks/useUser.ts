@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { UserAPI } from "../api/index";
+import { UserAPI } from "api";
 
 const UserKey = ["UserKey"];
 

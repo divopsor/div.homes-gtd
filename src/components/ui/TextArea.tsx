@@ -1,5 +1,4 @@
 import { css } from "@emotion/react";
-import { text } from "stream/consumers";
 import { Txt } from "./Txt";
 
 interface TextAreaProps {
