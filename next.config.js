@@ -3,6 +3,7 @@ module.exports = (phase, { defaultConfig }) => {
   const nextConfig = {
     // ...defaultConfig,
     reactStrictMode: true,
+    trailingSlash: true,
     swcMinify: true,
     basePath: "/gtd",
     typescript: {
