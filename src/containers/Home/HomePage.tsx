@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
 import { GtdTodoAPI } from "../../api";
 import { UserNav } from "../../components/UserNav";
-import { GtdItem } from "../../components/GtdItem";
 import { useLoginCallback, useList, useUser } from "../../hooks";
 import { Welcome } from "./Welcome";
 import { Container, Spacing, Stack, TextAreaForm } from "../../components/ui";
+import { EditableListItem } from "../../components/ui/EditableListItem";
 
 export const HomePage: NextPage = () => {
   const { loginLoading } = useLoginCallback();
@@ -44,30 +44,31 @@ export const HomePage: NextPage = () => {
 
         <ul>
           {todoList.map((data: any) => (
-            <GtdItem
+            <EditableListItem
               key={data.id}
               data={data}
-              buttons={[
-                {
-                  name: "제출",
-                  onClick: async ({ text, setMode }) => {
-                    await GtdTodoAPI.update({
-                      id: data.id,
-                      resource: { contents: text },
-                      summary: { contents: text },
-                    });
-                    await refetchTodoList();
-                    setMode("view");
-                  },
+              viewButtons={{
+                수정: ({ setMode }) => setMode("edit"),
+                삭제: async () => {
+                  await GtdTodoAPI.delete({ id: data.id });
+                  await refetchTodoList();
                 },
-                {
-                  name: "취소",
-                  onClick: async ({ setText, setMode }) => {
-                    setText(data.contents);
-                    setMode("view");
-                  },
+              }}
+              editButtons={{
+                제출: async ({ text, setMode }) => {
+                  await GtdTodoAPI.update({
+                    id: data.id,
+                    resource: { contents: text },
+                    summary: { contents: text },
+                  });
+                  await refetchTodoList();
+                  setMode("view");
                 },
-              ]}
+                취소: ({ setText, setMode }) => {
+                  setText(data.contents);
+                  setMode("view");
+                },
+              }}
             />
           ))}
         </ul>

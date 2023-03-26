@@ -1,4 +1,6 @@
 import { css } from "@emotion/react";
+import { text } from "stream/consumers";
+import { Txt } from "./Txt";
 
 interface TextAreaProps {
   value: string;
@@ -9,10 +11,10 @@ interface TextAreaProps {
 export function TextArea({ setValue, value, rows, cols }: TextAreaProps) {
   return (
     <textarea
-        spellCheck={false}
-        css={css`
+      spellCheck={false}
+      css={css`
         resize: none;
-        ${ cols == null? 'width: 100%;' : ''}
+        ${cols == null ? "width: 100%;" : ""}
         font-size: 1.6rem;
         word-break: keep-all;
         white-space: pre-line;
@@ -25,3 +27,15 @@ export function TextArea({ setValue, value, rows, cols }: TextAreaProps) {
     />
   );
 }
+
+TextArea.View = ({ value }: Pick<TextAreaProps, "value">) => {
+  return (
+    <Txt
+      css={css`
+        padding: 3px;
+      `}
+    >
+      {value}
+    </Txt>
+  );
+};
