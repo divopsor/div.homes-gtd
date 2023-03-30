@@ -18,6 +18,7 @@ export function TextArea({ setValue, value, rows, cols }: TextAreaProps) {
         word-break: keep-all;
         white-space: pre-line;
         font-family: "Noto Sans KR", sans-serif;
+        margin: 4px;
       `}
       value={value}
       rows={rows ?? value.split("\n").length}
@@ -32,6 +33,7 @@ TextArea.View = ({ value }: Pick<TextAreaProps, "value">) => {
     <Txt
       css={css`
         padding: 3px;
+        margin: 4px;
       `}
     >
       {value}

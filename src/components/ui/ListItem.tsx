@@ -1,3 +1,4 @@
+import { css } from "@emotion/react";
 import { ReactNode } from "react";
 import { Stack } from "./Stack";
 
@@ -9,7 +10,13 @@ interface ListItemProps {
 
 export function ListItem({ left, right }: ListItemProps) {
   return (
-    <li>
+    <li
+      css={css`
+        border: 2px solid;
+        border-radius: 6px;
+        margin-bottom: 6px;
+      `}
+    >
       <Stack.Horizontal>
         {left}
         {right}
