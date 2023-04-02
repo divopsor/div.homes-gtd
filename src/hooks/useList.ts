@@ -24,6 +24,13 @@ export function useFlashList(model: Model) {
       return;
     }
 
+    if (typeof window !== "undefined") {
+      window?.localStorage?.setItem(
+        `useFlashList-${model}`,
+        JSON.stringify(list)
+      );
+    }
+
     setFlashList(list);
   }, [list]);
 
