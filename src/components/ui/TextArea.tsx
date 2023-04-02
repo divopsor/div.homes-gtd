@@ -42,7 +42,10 @@ TextArea.View = ({ value }: Pick<TextAreaProps, "value">) => {
         padding: 3px;
       `}
     >
-      {value}
+      {value.replace(
+        /(https?:\/\/\S+)/g,
+        '<a href="$1" target="_blank" style="color: blue; text-decoration: underline;">Link</a>'
+      )}
     </Txt>
   );
 };

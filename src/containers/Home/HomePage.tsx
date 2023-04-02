@@ -38,7 +38,7 @@ export const HomePage: NextPage = () => {
             onSubmit={async (inputText) => {
               const resource = {
                 contents: inputText,
-                priority: 0,
+                priority: todoList.length,
               };
               await GtdTodoAPI.create({ resource, summary: { ...resource } });
               await refetchTodoList();

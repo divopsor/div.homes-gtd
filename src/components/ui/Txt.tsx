@@ -16,8 +16,7 @@ export function Txt({ className, children }: TxtProps) {
         word-break: keep-all;
         white-space: pre-line;
       `}
-    >
-      {children}
-    </p>
+      dangerouslySetInnerHTML={{ __html: `${children}` }}
+    />
   );
 }
