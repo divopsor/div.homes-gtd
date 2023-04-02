@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { GtdDoneAPI, GtdTodoAPI } from "api";
-import { useLoginCallback, useList, useUser } from "hooks";
+import { useLoginCallback, useFlashList, useUser } from "hooks";
 import { Welcome } from "../Welcome";
 import {
   Container,
@@ -12,7 +12,7 @@ import {
 import { MainMenus } from "../../components/MainMenus";
 
 export const HomePage: NextPage = () => {
-  const [todoList, refetchTodoList] = useList("todo");
+  const [todoList, refetchTodoList] = useFlashList("todo");
   const { loginLoading } = useLoginCallback();
   const { isLoading, data: user } = useUser();
 

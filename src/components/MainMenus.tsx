@@ -1,11 +1,11 @@
 import { css } from "@emotion/react";
 import { GtdTodoAPI } from "../api/index";
-import { useList } from "../hooks/useList";
+import { useFlashList } from "../hooks/useList";
 import { Container } from "./ui/Container";
 import { TxtButton } from "./ui/TxtButton";
 
 export function MainMenus() {
-  const [todoList, refetchTodoList] = useList("todo");
+  const [todoList, refetchTodoList] = useFlashList("todo");
 
   if (todoList == null || todoList.length === 0) {
     return null;

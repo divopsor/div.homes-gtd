@@ -1,8 +1,34 @@
 import { useQuery } from "@tanstack/react-query";
 import { GtdDoneAPI, GtdTodoAPI } from "api";
+import { useEffect, useState } from "react";
 import { useUser } from "./useUser";
 
 type Model = "todo" | "done";
+
+export function useFlashList(model: Model) {
+  const [list, refetch, isLoading, isFetching] = useList(model);
+  const [flashList, setFlashList] = useState(
+    JSON.parse(
+      typeof localStorage !== "undefined"
+        ? window?.localStorage?.getItem(`useFlashList-${model}`) ?? "[]"
+        : "[]"
+    )
+  );
+
+  useEffect(() => {
+    if (list == null) {
+      return;
+    }
+
+    if (list.length === 0) {
+      return;
+    }
+
+    setFlashList(list);
+  }, [list]);
+
+  return [flashList, refetch, isLoading, isFetching] as const;
+}
 
 export function useList(model: Model) {
   const { data: user } = useUser();
