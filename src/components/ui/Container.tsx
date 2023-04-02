@@ -4,12 +4,17 @@ import { ReactNode } from "react";
 interface ContainerProps {
   children: ReactNode;
   className?: string;
-  width: number;
+  width?: number;
 }
 
-export const Container = ({ children, width }: ContainerProps) => {
+export const Container = ({
+  className,
+  children,
+  width = 720,
+}: ContainerProps) => {
   return (
     <div
+      className={className}
       css={css`
         margin: 0 auto;
         width: ${width}px;

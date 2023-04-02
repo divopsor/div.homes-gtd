@@ -2,14 +2,22 @@ import { css } from "@emotion/react";
 import { Txt } from "./Txt";
 
 interface TextAreaProps {
+  className?: string;
   value: string;
   setValue: (_: string) => void;
   rows?: number;
   cols?: number;
 }
-export function TextArea({ setValue, value, rows, cols }: TextAreaProps) {
+export function TextArea({
+  className,
+  setValue,
+  value,
+  rows,
+  cols,
+}: TextAreaProps) {
   return (
     <textarea
+      className={className}
       spellCheck={false}
       css={css`
         resize: none;
@@ -18,7 +26,6 @@ export function TextArea({ setValue, value, rows, cols }: TextAreaProps) {
         word-break: keep-all;
         white-space: pre-line;
         font-family: "Noto Sans KR", sans-serif;
-        margin: 4px;
       `}
       value={value}
       rows={rows ?? value.split("\n").length}
@@ -33,7 +40,6 @@ TextArea.View = ({ value }: Pick<TextAreaProps, "value">) => {
     <Txt
       css={css`
         padding: 3px;
-        margin: 4px;
       `}
     >
       {value}

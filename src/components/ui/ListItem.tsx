@@ -3,18 +3,18 @@ import { ReactNode } from "react";
 import { Stack } from "./Stack";
 
 interface ListItemProps {
+  className?: string;
   key?: string;
   left: ReactNode;
   right: ReactNode;
 }
 
-export function ListItem({ left, right }: ListItemProps) {
+export function ListItem({ className, left, right }: ListItemProps) {
   return (
     <li
+      className={className}
       css={css`
-        border: 2px solid;
         border-radius: 6px;
-        margin-bottom: 6px;
       `}
     >
       <Stack.Horizontal>
