@@ -1,10 +1,10 @@
 import { css } from "@emotion/react";
 import router from "next/router";
-import { useUser } from "hooks";
+import { useFlashUser } from "hooks";
 import { Stack } from "components/ui";
 
 export function MainNav() {
-  const { data: user, login, logout } = useUser();
+  const { data: user, login, logout } = useFlashUser();
 
   return (
     <Stack.Horizontal align="space-between">

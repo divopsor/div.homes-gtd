@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { GtdDoneAPI, GtdTodoAPI } from "api";
-import { useLoginCallback, useFlashList, useUser } from "hooks";
+import { useLoginCallback, useFlashList, useFlashUser } from "hooks";
 import { Welcome } from "../Welcome";
 import {
   Container,
@@ -14,7 +14,7 @@ import { MainMenus } from "../../components/MainMenus";
 export const HomePage: NextPage = () => {
   const [todoList, refetchTodoList] = useFlashList("todo");
   const { loginLoading } = useLoginCallback();
-  const { isLoading, data: user } = useUser();
+  const { isLoading, data: user } = useFlashUser();
 
   if (loginLoading || isLoading) {
     return <div>로그인 중</div>;

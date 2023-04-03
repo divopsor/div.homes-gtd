@@ -8,9 +8,37 @@ interface User {
   login: string;
 }
 
-useUser.key = UserKey;
+export function useFlashUser() {
+  const { data, isLoading, login, logout } = useUser();
+  const [flashUser, setFlashUser] = useState(
+    JSON.parse(
+      typeof localStorage !== "undefined"
+        ? window?.localStorage?.getItem(`useFlashUser`) ?? "{}"
+        : "{}"
+    )
+  );
 
-function useUser() {
+  useEffect(() => {
+    if (data == null) {
+      return;
+    }
+
+    if (typeof window !== "undefined") {
+      window?.localStorage?.setItem(`useFlashList`, JSON.stringify(data));
+    }
+
+    setFlashUser(data);
+  }, [data]);
+
+  return {
+    data: flashUser,
+    isLoading,
+    login,
+    logout,
+  } as const;
+}
+
+export function useUser() {
   const [isLoading, setLoading] = useState(true);
   const queryClient = useQueryClient();
 
@@ -43,5 +71,3 @@ function useUser() {
     logout,
   } as const;
 }
-
-export { useUser };

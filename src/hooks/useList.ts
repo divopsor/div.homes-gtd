@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { GtdDoneAPI, GtdTodoAPI } from "api";
 import { useEffect, useState } from "react";
-import { useUser } from "./useUser";
+import { useFlashUser } from "./useUser";
 
 type Model = "todo" | "done";
 
@@ -38,7 +38,7 @@ export function useFlashList(model: Model) {
 }
 
 export function useList(model: Model) {
-  const { data: user } = useUser();
+  const { data: user } = useFlashUser();
 
   const {
     data: list,
