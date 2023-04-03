@@ -24,7 +24,7 @@ export function useFlashUser() {
     }
 
     if (typeof window !== "undefined") {
-      window?.localStorage?.setItem(`useFlashList`, JSON.stringify(data));
+      window?.localStorage?.setItem(`useFlashUser`, JSON.stringify(data));
     }
 
     setFlashUser(data);
