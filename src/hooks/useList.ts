@@ -7,13 +7,13 @@ type Model = "todo" | "done";
 
 export function useFlashList(model: Model) {
   const [list, refetch, isLoading, isFetching] = useList(model);
-  const [flashList, setFlashList] = useState(
-    JSON.parse(
-      typeof localStorage !== "undefined"
-        ? window?.localStorage?.getItem(`useFlashList-${model}`) ?? "[]"
-        : "[]"
-    )
-  );
+  const [flashList, setFlashList] = useState([]);
+
+  useEffect(() => {
+    setFlashList(
+      JSON.parse(localStorage.getItem(`useFlashList-${model}`) ?? "[]")
+    );
+  }, []);
 
   useEffect(() => {
     if (list == null) {

@@ -10,13 +10,11 @@ interface User {
 
 export function useFlashUser() {
   const { data, isLoading, login, logout } = useUser();
-  const [flashUser, setFlashUser] = useState(
-    JSON.parse(
-      typeof localStorage !== "undefined"
-        ? window?.localStorage?.getItem(`useFlashUser`) ?? "null"
-        : "null"
-    )
-  );
+  const [flashUser, setFlashUser] = useState<any>(null);
+
+  useEffect(() => {
+    setFlashUser(JSON.parse(localStorage.getItem(`useFlashUser`) ?? "null"));
+  }, []);
 
   useEffect(() => {
     if (data == null) {
