@@ -13,8 +13,8 @@ export function useFlashUser() {
   const [flashUser, setFlashUser] = useState(
     JSON.parse(
       typeof localStorage !== "undefined"
-        ? window?.localStorage?.getItem(`useFlashUser`) ?? "{}"
-        : "{}"
+        ? window?.localStorage?.getItem(`useFlashUser`) ?? "null"
+        : "null"
     )
   );
 
