@@ -5,9 +5,9 @@ import { useFlashUser } from "./useUser";
 
 type Model = "todo" | "done";
 
-export function useFlashList(model: Model) {
+export function useFlashList<T = any>(model: Model) {
   const [list, refetch, isLoading, isFetching] = useList(model);
-  const [flashList, setFlashList] = useState([]);
+  const [flashList, setFlashList] = useState<T[]>([]);
 
   useEffect(() => {
     setFlashList(
@@ -48,7 +48,9 @@ export function useList(model: Model) {
   } = useQuery(
     ["fetchList", user?.login, model],
     async () =>
-      user?.login == null ? [] : (await ModelAPI.of(model).readList()).data,
+      user?.login == null
+        ? []
+        : (await ModelAPI.of(model).readList({ pageSize: 100 })).data,
     { initialData: [] }
   );
 
