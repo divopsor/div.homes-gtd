@@ -45,7 +45,14 @@ export function useList(model: Model) {
       user?.login == null
         ? []
         : (await ModelAPI.of(model).readList({ pageSize: 100 })).data,
-    { initialData: [] }
+    {
+      initialData: [],
+      refetchInterval: false,
+      refetchIntervalInBackground: false,
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+    }
   );
 
   return [list, refetch, isLoading, isFetching] as const;
