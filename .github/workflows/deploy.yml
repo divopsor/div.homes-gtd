@@ -1,12 +1,15 @@
 name: deploy
+
 on:
   push:
     branches:
       - 'main'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'
 
 jobs:
   deploy:
-    if: (!contains(github.event.head_commit.message, 'skip vercel'))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -15,15 +18,27 @@ jobs:
           token: ${{ secrets.PAT }}
           submodules: true
 
-      - name: yarn && build and export
+      - name: Cache Packages
+        id: cache-packages
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-packages
+        with:
+          path: ~/.yarn
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: yarn install && build
         run: |
-          yarn
+          YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn
           yarn build
-          yarn next export
 
       - name: deploy to public storage
         run: |
-          rm -rf public-storage 
+          rm -rf public-storage
           git clone https://$CRECO_STORAGE@github.com/creco-storage/public-storage.git
           
           cd public-storage
@@ -33,7 +48,7 @@ jobs:
           rm -rf ./div.homes/gtd
           mv ../out ./div.homes/gtd
           git add -A
-          git -c core.hookspath=/dev/null commit -m "${{ github.event.head_commit.message }}"
+          git -c core.hookspath=/dev/null commit -m "$(git log -1 --pretty=%B)"
           git push origin HEAD
         env:
           CRECO_STORAGE: ${{ secrets.CRECO_STORAGE }}

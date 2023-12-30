@@ -2,12 +2,11 @@
   "name": "@divopsor/div.homes-gtd",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "LOCAL=true next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "test -n $SKIP_INSTALL || config-cli",
-    "prepare": "husky install"
+    "prepare": "husky install && cd ../../ && yarn config-cli div.homes/gtd"
   },
   "dependencies": {
     "@babel/core": "^7.19.1",
@@ -25,7 +24,6 @@
     "styles": "link:./src/styles"
   },
   "devDependencies": {
-    "@divopsor/frontend-configs-cli": "workspace:^",
     "@emotion/babel-plugin": "^11.10.2",
     "@types/babel__core": "^7",
     "@types/eslint": "^8",
