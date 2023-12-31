@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install && cd ../../ && yarn config-cli div.homes/gtd"
+    "prepare": "cd ../../ && yarn config-cli div.homes/gtd"
   },
   "dependencies": {
     "@babel/core": "^7.19.1",
@@ -35,7 +35,6 @@
     "eslint": "8.23.1",
     "eslint-config-next": "12.3.1",
     "eslint-plugin-import": "^2.26.0",
-    "husky": "^8.0.1",
     "typescript": "4.8.3"
   }
 }
